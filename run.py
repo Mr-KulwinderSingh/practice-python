@@ -1,3 +1,8 @@
+
+
+import colorama 
+from colorama import Fore, Back, Style 
+colorama.init(autoreset= True)
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
@@ -46,6 +51,28 @@ start = input("To start please type yes\n ")
 
 if start.lower() != "yes":
     quit()
+
+
+def progress_bar(progress, total, color=colorama.Fore.YELLOW):
+    percent = 100 * (progress / float(total))
+    bar = '-' * int(percent) + '-' * (100 - int(percent) )
+    print(color + f"\r | {bar}| {percent:.25f}%", end="\r ")
+    if progress == 'total':
+        print(colorama.Fore.GREEN + f"\r | {bar}| {percent:.25f}%", end="\r ")
+
+
+
+numbers = [x * 5 for x in range (2000, 3000)]
+output = ['25%']
+
+progress_bar(0, len(numbers))
+
+for i, x in enumerate(numbers):
+    output.append(math.factorial(x))
+    progress_bar(i + 1, len(numbers))
+
+print(colorama.Fore.RESET)
+
 
 
 def get_user_data():
