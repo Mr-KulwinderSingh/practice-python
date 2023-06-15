@@ -125,6 +125,32 @@ def calculate_bmi(name, weight, height):
 
     
 
+class User:
+    def __init__(self, name, user_age, weight, height):
+        self.name = name
+        self.user_age = user_age
+        self.weight = weight
+        self.height = height
+
+    def another(self):
+        print(f"User's name is {self.name}")
+        print(f"User's age is {self.user_age}")
+        print(f"User's weight is {self.weight}")
+        print(f"User's height is {self.height}")
+
+
+user_one_name = input("Enter your name:\n")
+user_one_age = input("Enter your age:\n")
+user_one_weight = input("Enter your weight")
+user_one_height = input("Enter your height")
+
+
+object_of_user = User(user_one_name, user_one_age, user_one_weight, user_one_height)
+object_of_user.another()
+
+
+
+
 
 name, user_age, weight, height = get_user_data()
 calculate_bmi(name, weight, height)
