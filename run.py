@@ -57,30 +57,46 @@ def get_user_data():
     """
 
     while True:
+
+
+        user_one_name = input("Enter your name:\n")
+        user_one_age = int(input("Enter your age:\n"))
+        user_one_weight = int(input("Enter your weight:\n"))
+        user_one_height = int(input("Enter your height:\n"))
+
     
-        print("Great !")
-        name = input("Please enter your name:\n")
-        
-        age = int(input("Please enter your age:\n"))
-        
-        print("Please provide your body weight(in kgs)")
-        data1 = int(input("Enter your weight here:\n "))
+        class User:
+            def __init__(self, name, user_age, weight, height):
+                self.name = name
+                self.user_age = user_age
+                self.weight = weight
+                self.height = height
 
-        print("now enter your height(only in cms)")
-        data2 = int(input("Enter the height here:\n "))
-        print(f"Your weight is : {data1}kgs and height is :{data2}cms\n")
+            def another(self):
+                print(f"Your name is {self.name}")
+                print(f"Your age is {self.user_age}")
+                print(f"Your weight is {self.weight}")
+                print(f"Your height is {self.height}")
 
 
-        weight = data1 
-        height = data2
-        user_age = age
+        object_of_user = User(user_one_name, user_one_age, user_one_weight, user_one_height)
+        object_of_user.another()
+
+
+
+
+
+        weight = user_one_weight
+        height = user_one_height
+        user_age = user_one_age
         
+        calculate_bmi(user_one_name, weight, height) 
         
         if validate_input(weight, height, user_age):
             print("Given entries are valid!")
             break
 
-    return name, weight, height, user_age
+    return user_one_name, weight, height, user_age
 
 def validate_input(weight, height, user_age):
     """
@@ -104,7 +120,7 @@ def validate_input(weight, height, user_age):
     return True
 
     name, weight, height = calculate_bmi
-    calculate_bmi(name, wight, height) 
+    
 
 def calculate_bmi(name, weight, height):
     """
@@ -123,34 +139,11 @@ def calculate_bmi(name, weight, height):
     else:
         print(name + " " + "sorry but your weight is a bit high\n")
 
-    
 
-class User:
-    def __init__(self, name, user_age, weight, height):
-        self.name = name
-        self.user_age = user_age
-        self.weight = weight
-        self.height = height
-
-    def another(self):
-        print(f"User's name is {self.name}")
-        print(f"User's age is {self.user_age}")
-        print(f"User's weight is {self.weight}")
-        print(f"User's height is {self.height}")
-
-
-user_one_name = input("Enter your name:\n")
-user_one_age = input("Enter your age:\n")
-user_one_weight = input("Enter your weight")
-user_one_height = input("Enter your height")
-
-
-object_of_user = User(user_one_name, user_one_age, user_one_weight, user_one_height)
-object_of_user.another()
 
 
 
 
 
 name, user_age, weight, height = get_user_data()
-calculate_bmi(name, weight, height)
+
