@@ -55,7 +55,7 @@ if start.lower() != "yes":
 
 def progress_bar(progress, total, color=colorama.Fore.YELLOW):
     percent = 100 * (progress / float(total))
-    bar = '-' * int(percent) + '-' * (100 - int(percent) )
+    bar = '@' * int(percent) + '-' * (100 - int(percent) )
     print(color + f"\r | {bar}| {percent:.25f}%", end="\r ")
     if progress == 'total':
         print(colorama.Fore.GREEN + f"\r | {bar}| {percent:.25f}%", end="\r ")
@@ -63,7 +63,7 @@ def progress_bar(progress, total, color=colorama.Fore.YELLOW):
 
 
 numbers = [x * 5 for x in range (2000, 3000)]
-output = ['25%']
+output = []
 
 progress_bar(0, len(numbers))
 
