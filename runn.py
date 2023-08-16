@@ -50,9 +50,24 @@ def get_user_data():
     while True:
 
         user1_name = input("Enter your Name:\n")
+        if user1_name.strip() == "":     
+            print(Fore.RED + " User name is required. Please enter a valid user name.")
+            continue
+        elif not user1_name.isalpha():  
+            print(Fore.RED + " User name should not contain numbers or symbols. Enter a valid user name.")
+            continue
         user1_age = input("Enter your Age:\n")
+        if not user1_age.isdigit():
+            print(Fore.RED + " User age is required. Please enter a valid age(a number).")
+            continue
         user1_weight = input("Enter your Weight(in kgs only):\n")
+        if not user1_weight.isdigit():
+            print(Fore.RED + " User weight is required. Please enter a valid weight(a number).")
+            continue
         user1_height = input("Enter your Height(in cms only):\n")
+        if not user1_height.isdigit():
+            print(Fore.RED + " User height is required. Please enter a valid height(a number).")
+            continue
 
         class User:
             """
@@ -87,7 +102,7 @@ def get_user_data():
         validate_user_height(height)
 
         if validate_user_age(user_age):
-            print("Given entries are valid!")
+            print("Thanks for using BMI!")
             break
     return user1_name, weight, height, user_age
 
@@ -100,19 +115,14 @@ def validate_username(user1_name):
     """
     try:
         
-        if user1_name == " ":
-            raise ValueError(
-                f"'Blank space error!', Please enter a name {user1_name}"
-            )
-        elif (len(user1_name) <= 2) or (len(user1_name) >= 10):
+
+        if (len(user1_name) <= 2) or (len(user1_name) >= 10):
                 raise ValueError(
-                    f"User name should be min 3 or max 10 characters long"
+                    f" User name should be 3 to 10 characters long"
                 )
     except ValueError as e:
         print(f"Invalid entry: {e}, please try again.\n ")
-        return False
-        print("Due to the error program ended")
-    return True
+        
 
 def validate_user_age(user_age):
     """
@@ -170,9 +180,6 @@ def validate_user_height(height):
             ) 
     except ValueError as e:
         print(f"Invalid entry:{e}, please try again.\n ")
-        return False
-
-    return True
 
 
 def calculate_bmi(name, weight, height):
@@ -201,7 +208,7 @@ def main():
 
     name, user_age, weight, height = get_user_data()
 
-    choice_to_restart = input('Press any key to restart or "q" to quit\n ')
+    choice_to_restart = input('Would you like to restart please press any key to restart or "q" to quit\n ')
 
     if choice_to_restart == "q":
         (quit)
